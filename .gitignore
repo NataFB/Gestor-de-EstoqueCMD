@@ -1,0 +1,52 @@
+# =======================
+# Build e arquivos temporários
+# =======================
+bin/
+obj/
+Debug/
+Release/
+
+# =======================
+# Configurações do usuário e do Visual Studio
+# =======================
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# =======================
+# Pacotes e dependências
+# =======================
+*.nupkg
+*.snupkg
+*.nuspec
+packages/
+*.cache
+project.lock.json
+project.fragment.lock.json
+
+# =======================
+# Logs e arquivos temporários
+# =======================
+*.log
+*.tlog
+*.ide
+*.vspscc
+*.vssscc
+
+# =======================
+# Configurações locais
+# =======================
+appsettings.Development.json
+
+# =======================
+# Data e arquivos gerados
+# =======================
+Data/
+
+# =======================
+# JetBrains Rider
+# =======================
+.idea/
+*.sln.iml
