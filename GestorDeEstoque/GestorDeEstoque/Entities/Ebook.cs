@@ -1,16 +1,19 @@
 ﻿using GestorDeEstoque.Interfaces;
 using System.Globalization;
-using System.Text.Json.Serialization;
+using System.Text.Json.Serialization; // Importa recursos para serialização JSON
 
 
 namespace GestorDeEstoque.Entities
 {
+    // Declara a classe Ebook, que herda de Produto e implementa a interface IEstoque
     public class Ebook : Produto, IEstoque
     {
         public string Autor { get; set; }
+        // [JsonInclude] permite que esta propriedade privada seja salva/carregada no JSON
         [JsonInclude]
         private int _Vendas { get; set; }
 
+        //Construtor da classe
         public Ebook(string nome, double preco, string autor)
         {
             Nome = nome;
@@ -18,12 +21,16 @@ namespace GestorDeEstoque.Entities
             Autor = autor;
         }
 
+        // Implementação do método AdicionarEntrada da interface IEstoque
+        // Para Ebook, entrada não faz sentido pois é digital e não tem estoque físico limitado
         public void AdicionarEntrada()
         {
             Console.WriteLine("Não é possível dar entrada no estoque de um E-book, pois é um produto digital");
             Console.ReadLine();
         }
 
+        // Implementação do método AdicionarSaida da interface IEstoque
+        // Para Ebook, "saída" representa o registro de novas vendas
         public void AdicionarSaida()
         {
             Console.WriteLine($"Adicionar vendas do Ebook {Nome}");
@@ -34,6 +41,8 @@ namespace GestorDeEstoque.Entities
             Console.ReadLine();
         }
 
+        // Implementação do método Exibir da interface IEstoque
+        // Mostra as informações do Ebook no console
         public void Exibir()
         {
             Console.WriteLine($"Nome: {Nome}");

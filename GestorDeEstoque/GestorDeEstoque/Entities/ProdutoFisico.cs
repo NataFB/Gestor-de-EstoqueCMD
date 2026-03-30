@@ -1,15 +1,18 @@
 ﻿using GestorDeEstoque.Interfaces;
-using System.Text.Json.Serialization;
-using System.Globalization;
+using System.Text.Json.Serialization; //Importa recursos para serialização JSON
+using System.Globalization; //Formatação de numeros e datas de acordo com a cultura (ex: formatação de preço)
 
 namespace GestorDeEstoque.Entities
 {
+    // Declara a classe ProdutoFisico, que herda de Produto e implementa a interface IEstoque
     public class ProdutoFisico : Produto, IEstoque
     {
         public double Frete { get; set; }
+        // [JsonInclude] permite que esta propriedade privada seja incluída na serialização/desserialização JSON
         [JsonInclude]
         private int _Estoque {  get; set; }
 
+        //Construtor
         public ProdutoFisico(string nome, double preco, double frete)
         {
             Nome = nome;
@@ -17,6 +20,8 @@ namespace GestorDeEstoque.Entities
             Frete = frete;
         }
 
+        // Implementação do método AdicionarEntrada da interface IEstoque
+        // Registra a entrada de itens no estoque
         public void AdicionarEntrada()
         {
             Console.WriteLine($"Adicionar entrada no estoque do produto {Nome}");
@@ -27,6 +32,8 @@ namespace GestorDeEstoque.Entities
             Console.ReadLine();
         }
 
+        // Implementação do método AdicionarSaida da interface IEstoque
+        // Registra a saída de itens do estoque
         public void AdicionarSaida()
         {
             Console.WriteLine($"Adicionar saida no estoque do produto {Nome}");
@@ -37,6 +44,8 @@ namespace GestorDeEstoque.Entities
             Console.ReadLine();
         }
 
+        // Implementação do método Exibir da interface IEstoque
+        // Mostra as informações do produto físico no console
         public void Exibir()
         {
             Console.WriteLine($"Nome: {Nome}");
